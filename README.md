@@ -1,5 +1,4 @@
-# RazorOverAndUnder
-with xunit tests
+  # Pizza chatbot
 
 To run:
 
@@ -13,3 +12,8 @@ To test:
 ```
 dotnet test
 ```
+## To modify: 
+
+if you're a collaborator, make a new branch and make a pull request
+
+if you are not a collaborator: fork and then make a pr
