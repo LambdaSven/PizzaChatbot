@@ -1,5 +1,8 @@
   # Pizza chatbot
 
+
+This is an assignment for PROG8050 at Conestoga College.
+
 To run:
 
 ```
