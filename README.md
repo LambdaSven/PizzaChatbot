@@ -17,6 +17,8 @@ dotnet test
 ```
 ## To modify: 
 
-if you're a collaborator, make a new branch and make a pull request
+if you're a collaborator, make a new branch and make a pull request: 
+
+    Please ensure your PR is made to this repository and not the repository which this is a fork of. If you PR that repository it will not be mergable here.
 
 if you are not a collaborator: fork and then make a pr
