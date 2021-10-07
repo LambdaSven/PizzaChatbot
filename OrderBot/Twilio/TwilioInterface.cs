@@ -12,7 +12,7 @@ namespace PizzaBot.Interface
       */
       public string OnMessage(string from, string body)
       {
-        return "";
+        return $"{body} from {from}";
       }
     }
 }
