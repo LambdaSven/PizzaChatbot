@@ -16,7 +16,7 @@ namespace wireless.Pages
  [IgnoreAntiforgeryToken(Order = 1001)]
     public class IndexModel : PageModel
     {
-        private TwilioInterface twilio = new TwilioInterface();
+        private static TwilioInterface twilio = new TwilioInterface();
         public ActionResult OnPost()
         {
             string sFrom = Request.Form["From"];
