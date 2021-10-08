@@ -23,11 +23,11 @@ namespace PizzaBot.Interface
         Session s = Sessions[from];
         if (body.ToLower().Split(" ")[0].Equals("help"))
         {
-          return HelpManager.Help(from);
+          return HelpManager.Help(body);
         }
         else
         {
-          return s.Input(from);
+          return s.Input(from, body);
         }
       }
     }

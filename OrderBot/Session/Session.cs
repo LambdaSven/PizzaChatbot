@@ -20,7 +20,7 @@ namespace PizzaBot.Sessions
       This function reads the state and progresses to the relevant operation
       of our FSM
     */
-    public string Input(string input)
+    public string Input(string from, string input)
     {
       return State switch 
         {
