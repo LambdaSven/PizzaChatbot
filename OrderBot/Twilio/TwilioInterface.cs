@@ -21,15 +21,14 @@ namespace PizzaBot.Interface
         }
 
         Session s = Sessions[from];
-        // greet customer
-        if (!s.BeenGreeted)
+        if (body.ToLower().Split(" ")[0].Equals("help"))
         {
-          s.BeenGreeted = true;
-          return HelpManager.Greet();       
+          return HelpManager.Help(from);
         }
-        
-        
-        return $"{body} from {from}";
+        else
+        {
+          return s.Input(from);
+        }
       }
     }
 }
