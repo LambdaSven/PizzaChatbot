@@ -16,13 +16,13 @@ namespace wireless.Pages
  [IgnoreAntiforgeryToken(Order = 1001)]
     public class IndexModel : PageModel
     {
+        private static TwilioInterface twilio = new TwilioInterface();
         public ActionResult OnPost()
         {
             string sFrom = Request.Form["From"];
             string sBody = Request.Form["Body"];
             var oMessage = new Twilio.TwiML.MessagingResponse();
 
-            TwilioInterface twilio = new TwilioInterface();
             oMessage.Message(twilio.OnMessage(sFrom, sBody));
             return Content(oMessage.ToString(), "application/xml");
         }
