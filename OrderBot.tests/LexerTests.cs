@@ -54,5 +54,36 @@ namespace OrderBot.tests
 
           Assert.True(test.SequenceEqual(input));
         }
+        [Fact(DisplayName = "Lex Pizza with size")]
+        public void SizeTest()
+        {
+          List<Token> test = new List<Token>();
+
+          test.Add(new Token(TokenType.NUMBER, "2"));
+          test.Add(new Token(TokenType.SIZE, "large"));    
+          test.Add(new Token(TokenType.PIZZA, "hawaiian"));          
+          test.Add(new Token(TokenType.GRAMMAR, "pizzas"));          
+          test.Add(new Token(TokenType.GRAMMAR, "without"));          
+          test.Add(new Token(TokenType.TOPPING, "pineapple"));          
+                
+
+          List<Token> input = Lexer.scan("2 large hawaiian pizzas without pineapple");
+
+          Assert.True(test.SequenceEqual(input));
+        }
+        [Fact(DisplayName = "Test Excess Spaces")]
+        public void ExcessSpace()
+        {
+          List<Token> test = new List<Token>();
+
+          test.Add(new Token(TokenType.NUMBER, "1"));          
+          test.Add(new Token(TokenType.GRAMMAR, "pizza"));          
+          test.Add(new Token(TokenType.GRAMMAR, "with"));          
+          test.Add(new Token(TokenType.TOPPING, "mushrooms"));          
+
+          List<Token> input = Lexer.scan("  1   pizza   with  mushrooms  ");
+
+          Assert.True(test.SequenceEqual(input));
+        }
     }
 }

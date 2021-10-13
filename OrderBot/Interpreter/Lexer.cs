@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace PizzaBot.Interpretation
 {
@@ -15,6 +16,10 @@ namespace PizzaBot.Interpretation
     {
       "tomato", "marinara", "white", "alfredo"
     };
+    static string[] sizes = 
+    {
+      "small", "medium", "large", "s", "m", "l"
+    };
     static string[] pizzas =
     {
      "cheese", "pepperoni", "deluxe", "hawaiian", "veggie", "canadian",
@@ -23,13 +28,14 @@ namespace PizzaBot.Interpretation
 
     static string[] grammar = 
     {
-      "a", "an", "with", "without", "and", "or", "no", "pizza", "half"
+      "a", "an", "with", "without", "and", "or", "no", "pizza", "pizzas", "half"
     };
     public static List<Token> scan(string src)
     {
       List<Token> ret = new List<Token>();
 
-      foreach (string s in src.Split(" "))
+      // remove trim whitespace, and split on any set of one or more whitespace characters
+      foreach (string s in Regex.Split(src.Trim(), @"\s+"))
       {
         ret.Add(Tokenise(s.ToLower()));
       }
@@ -46,6 +52,7 @@ namespace PizzaBot.Interpretation
       _ when bases.Contains(input) => new Token(TokenType.BASE, input),
       _ when pizzas.Contains(input) => new Token(TokenType.PIZZA, input),
       _ when grammar.Contains(input) => new Token(TokenType.GRAMMAR, input),
+      _ when sizes.Contains(input) => new Token(TokenType.SIZE, input),
       _ when isInt(input) => new Token(TokenType.NUMBER, input),
       _ => new Token(TokenType.UNKNOWN, input)
      };
