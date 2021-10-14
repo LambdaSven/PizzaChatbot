@@ -1,5 +1,4 @@
-using System.Runtime.CompilerServices;
-[assembly:InternalsVisibleTo("OrderBot.tests")]
+
 namespace PizzaBot.Interpretation 
 {
   /*
