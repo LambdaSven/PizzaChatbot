@@ -22,13 +22,13 @@ namespace PizzaBot.Interpretation
     };
     static string[] pizzas =
     {
-     "cheese", "pepperoni", "deluxe", "hawaiian", "veggie", "canadian",
+      "deluxe", "hawaiian", "veggie", "canadian",
       "meat", 
     };
 
     static string[] grammar = 
     {
-      "a", "an", "with", "without", "and", "or", "no", "pizza", "pizzas", "half"
+      "a", "an", "with", "without", "and", "or", "no", "pizza", "pizzas", "half", "on"
     };
     public static List<Token> scan(string src)
     {

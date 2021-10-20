@@ -1,7 +1,8 @@
 namespace PizzaBot.Orders
 {
-  internal enum Toppings
+  internal enum Topping
   {
-    
+   PEPPERONI, SAUSAGE, BACON, CHICKEN, HAM, BEEF, STEAK, SALAMI, ONION, MUSHROOMS, 
+   PEPPERS, PINEAPPLE, OLIVES, TOMATOES, SPINACH, JALAPENOS, PROVOLONE, CHEESE, CHEDDAR,
   }
 }
