@@ -5,10 +5,10 @@ namespace PizzaBot.Orders
 {
   internal class Pizza
   {
-    List<Topping> FullToppings;
-    List<Topping> HalfToppings;
-    Base Base;
-    Size Size;
+    public List<Topping> FullToppings;
+    public List<Topping> HalfToppings;
+    public Base Base;
+    public Size Size;
     public Pizza()
     {
       FullToppings = new List<Topping>() {Topping.CHEESE};

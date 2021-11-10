@@ -33,9 +33,9 @@ namespace PizzaBot.Interpretation
               repeatCount = int.Parse(t.value) - 1;
               pizzaPointer++;
             }
-            else if(input[i+1].value != "pizzas" && input[i+1].value != "pizza")
+            else // if(input[i+1].value != "pizzas" && input[i+1].value != "pizza")
             {
-              pizzaPointer += int.Parse(t.value);
+              pizzaPointer ++;//= int.Parse(t.value);
             }
             break;
           case TokenType.BASE:
@@ -46,7 +46,7 @@ namespace PizzaBot.Interpretation
             break;
           case TokenType.SIZE:  
             Size s = parseSize(t.value);
-            if(input[i+1].type == TokenType.PIZZA || input[i+1].type == TokenType.TOPPING) {
+            if(input[i+1].type == TokenType.PIZZA /*|| input[i+1].type == TokenType.TOPPING*/) {
               Pizza p = parsePizza(input[++i].value, Base.TOMATO, s);
               pizzas[pizzaPointer] = p;
               for(; repeatCount > 0; repeatCount--)
@@ -139,7 +139,7 @@ namespace PizzaBot.Interpretation
       "spinach" => Topping.SPINACH,
       "jalapenos" => Topping.JALAPENOS, 
       "provolone" => Topping.PROVOLONE, 
-      "cheese" => Topping.CHEESE, 
+//      "cheese" => Topping.CHEESE, 
       "cheddar" => Topping.CHEDDAR,
       _ => throw new System.Exception($"Unknown Topping {s}")
     };

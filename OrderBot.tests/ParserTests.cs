@@ -95,13 +95,19 @@ namespace OrderBot.tests
       {
         Order test = new Order("");
 
-        Parser.Parse(test, Lexer.scan("2 small pepperoni pizzas"));
+        Parser.Parse(test, Lexer.scan("2 small deluxe pizzas"));
         List<Pizza> intent = new List<Pizza>()
         {
           new Pizza(new List<Topping>(){Topping.CHEESE,
-                                        Topping.PEPPERONI}, Base.TOMATO, Size.SMALL),
+                                        Topping.PEPPERONI,
+                                        Topping.HAM,
+                                        Topping.PEPPERS,
+                                        Topping.MUSHROOMS}, Base.TOMATO, Size.SMALL),
           new Pizza(new List<Topping>(){Topping.CHEESE,
-                                        Topping.PEPPERONI}, Base.TOMATO, Size.SMALL)
+                                        Topping.PEPPERONI,
+                                        Topping.HAM,
+                                        Topping.PEPPERS,
+                                        Topping.MUSHROOMS}, Base.TOMATO, Size.SMALL)
         };
         Assert.True
         (
