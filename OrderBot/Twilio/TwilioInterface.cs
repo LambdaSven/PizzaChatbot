@@ -23,7 +23,7 @@ namespace PizzaBot.Interface
         Session s = Sessions[from];
         if (body.ToLower().Split(" ")[0].Equals("help"))
         {
-          return HelpManager.Help(body);
+          return HelpManager.Help(body.ToLower().Split(" "));
         }
         else
         {

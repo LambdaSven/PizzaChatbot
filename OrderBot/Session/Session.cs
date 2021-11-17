@@ -35,7 +35,8 @@ namespace PizzaBot.Sessions
           SessionState.ORDER_CONFIRM => OrderConfirm(input),
           SessionState.PAYMENT => Payment(),
           SessionState.PAYMENT_CONFIRM => PaymentConfirm(),
-          SessionState.COMPLETE => Complete()
+          SessionState.COMPLETE => Complete(),
+          _ => throw new Exception("Error: SessionState invalid")
         };
     }
 
@@ -45,22 +46,7 @@ namespace PizzaBot.Sessions
       this.State = SessionState.ORDER_CONFIRM;
       string ret = "Order recieved please confirm order:";
 
-      foreach(Pizza p in order.Pizzas)
-      {
-        ret += $"\n\t 1 {p.Size} Pizza with:";
-        foreach(Topping t in p.FullToppings)
-        {
-          ret += $"\n\t\t {t.ToString()},";
-        }
-        if(p.HalfToppings.Count != 0)
-        {
-          foreach(Topping t in p.HalfToppings)
-          {
-            ret += $"\n\t\t {t.ToString()} on half,";
-          } 
-        }
-        ret = ret.Remove(ret.Length - 1);
-      }
+      ret += TextManager.FormatPizza(order);
 
       return ret + "\n\n Please Type \"yes\" or \"no\" to confirm your order now.";
     }
@@ -69,7 +55,7 @@ namespace PizzaBot.Sessions
       if(input.Contains("yes"))
       {
         this.State = SessionState.PAYMENT;
-        return "Wonderful! Please proceed with payment: ";
+        return "Wonderful! Please proceed with payment: \n" + Input(order.Customer, "");
       }
       else if (input.Contains("no"))
       {
@@ -83,16 +69,18 @@ namespace PizzaBot.Sessions
     }
     private string Payment()
     {
-      return "Not Yet Implemented";
+      this.State = SessionState.PAYMENT_CONFIRM;
+      return "[Payment] Not Yet Implemented";
     }
     private string PaymentConfirm()
     {
-      return "Not Yet Implemented";
+      this.State = SessionState.COMPLETE;
+      return "[Payment Confirm] Not Yet Implemented";
     }
 
     private string Complete()
     {
-      return "Not Yet Implemented";
+      return "Order Complete!";
     }
 
     private string Greet()
