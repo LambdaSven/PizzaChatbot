@@ -25,6 +25,14 @@ namespace PizzaBot.Orders
       this.Size = Size;
     }
 
+    internal decimal CalculatePrice()
+    {
+      return (FullToppings.Select(e => e.Price()).Sum()
+           + HalfToppings.Select(e => e.Price()).Sum()
+           + 8m) * Size.Factor();
+    }
+
+
     public void AddTopping(Topping t) 
     {
         FullToppings.Add(t);

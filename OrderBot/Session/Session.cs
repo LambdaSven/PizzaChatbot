@@ -34,7 +34,7 @@ namespace PizzaBot.Sessions
           SessionState.ORDERING => Order(input, from),
           SessionState.ORDER_CONFIRM => OrderConfirm(input),
           SessionState.PAYMENT => Payment(),
-          SessionState.PAYMENT_CONFIRM => PaymentConfirm(),
+          SessionState.PAYMENT_CONFIRM => PaymentConfirm(input),
           SessionState.COMPLETE => Complete(),
           _ => throw new Exception("Error: SessionState invalid")
         };
@@ -70,12 +70,24 @@ namespace PizzaBot.Sessions
     private string Payment()
     {
       this.State = SessionState.PAYMENT_CONFIRM;
-      return "[Payment] Not Yet Implemented";
+      return $"The total for your order will be {order.CalculatePrice()}\nPlease Provide final verification on the order with [yes] or [no]";  
     }
-    private string PaymentConfirm()
+    private string PaymentConfirm(string input)
     {
-      this.State = SessionState.COMPLETE;
-      return "[Payment Confirm] Not Yet Implemented";
+      if(input.Contains("yes"))
+      {
+        this.State = SessionState.COMPLETE;
+        return "The pizza is in the oven, and the driver will be there in 40 minutes.\nThank you for shopping with us!";
+      }
+      else if(input.Contains("no"))
+      {
+        this.State = SessionState.ORDERING;
+        return "We're sorry. If you would like to try ordering something else, please feel free.";
+      }
+      else
+      {
+        return "Please type [yes] or [no] to confirm the order.";
+      }
     }
 
     private string Complete()
