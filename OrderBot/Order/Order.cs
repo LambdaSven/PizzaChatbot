@@ -18,5 +18,9 @@ namespace PizzaBot.Orders
     {
       Pizzas.Add(p);
     }
+    internal decimal CalculatePrice()
+    {
+      return Pizzas.Select(e => e.CalculatePrice()).Sum();
+    }
   }
 }
