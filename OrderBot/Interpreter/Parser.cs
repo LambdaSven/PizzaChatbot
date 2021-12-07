@@ -139,7 +139,7 @@ namespace PizzaBot.Interpretation
       "spinach" => Topping.SPINACH,
       "jalapenos" => Topping.JALAPENOS, 
       "provolone" => Topping.PROVOLONE, 
-//      "cheese" => Topping.CHEESE, 
+      "cheese" => Topping.CHEESE, 
       "cheddar" => Topping.CHEDDAR,
       _ => throw new System.Exception($"Unknown Topping {s}")
     };
@@ -162,7 +162,7 @@ namespace PizzaBot.Interpretation
 
     private static Pizza parsePizza(string String, Base b = Base.TOMATO, Size s = Size.MEDIUM) => String switch
     {
-      "cheese" => new Pizza(new List<Topping>(){Topping.CHEESE}, b, s),
+      //"cheese" => new Pizza(new List<Topping>(){Topping.CHEESE}, b, s),
       "pepperoni" => new Pizza(new List<Topping>(){Topping.CHEESE, 
                                                    Topping.PEPPERONI},b, s),
       "deluxe" => new Pizza(new List<Topping>(){Topping.CHEESE, 

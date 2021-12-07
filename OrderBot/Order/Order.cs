@@ -7,11 +7,21 @@ namespace PizzaBot.Orders
   {
     internal List<Pizza> Pizzas;
     internal string Customer;
-
+    internal string OrderString
+    {
+        get; set;
+    }
+    
     public Order(string s)
+    {
+      Pizzas = new List<Pizza>();
+      Customer = s;
+    }
+    public Order(string s, string raw)
     {
      Pizzas = new List<Pizza>();
      Customer = s;
+     OrderString = raw;
     }
 
     internal void AddPizza(Pizza p)

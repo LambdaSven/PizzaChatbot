@@ -6,7 +6,7 @@ namespace PizzaBot.Interpretation
   {
     public static Order Interpret(string input, string from)
     {
-      Order o = new Order(from);
+      Order o = new Order(from, input);
       Parser.Parse(o, Lexer.scan(input));
       return o;
     } 
