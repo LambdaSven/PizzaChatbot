@@ -1,4 +1,5 @@
 using System;
+using PizzaBot.Database;
 using PizzaBot.Interpretation;
 using PizzaBot.Orders;
 
@@ -7,10 +8,10 @@ namespace PizzaBot.Sessions
   public class Session
   {
     private string id;
-
+    private DBAccessor DB;
     private Order order;
     private SessionState state;
-    private SessionState State
+    internal SessionState State
     {
         get { return state; }
         set { state = value; }
@@ -20,6 +21,7 @@ namespace PizzaBot.Sessions
       this.id = id;
       State = SessionState.GREETING;
       order = null;
+      DB = new DBAccessor();
     }
 
     /*
@@ -55,7 +57,7 @@ namespace PizzaBot.Sessions
       if(input.Contains("yes"))
       {
         this.State = SessionState.PAYMENT;
-        return "Wonderful! Please proceed with payment: \n" + Input(order.Customer, "");
+        return "Wonderful! Please proceed with payment: \n" + Input(order.Customer, ""); // this is a hack to get around the fsm needing to be changed last minute
       }
       else if (input.Contains("no"))
       {
@@ -77,6 +79,8 @@ namespace PizzaBot.Sessions
       if(input.Contains("yes"))
       {
         this.State = SessionState.COMPLETE;
+        DBAccessor db = new DBAccessor();
+        db.SaveOrder(order);
         return "The pizza is in the oven, and the driver will be there in 40 minutes.\nThank you for shopping with us!";
       }
       else if(input.Contains("no"))
