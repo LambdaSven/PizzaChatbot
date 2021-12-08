@@ -35,14 +35,8 @@ The parser handles best messages like "1 medium pizza with mushrooms and onions"
 
 The help functionality is implemented, but is not super user friendly - that needs some work.
 
-The payment system currently is unimplemented, so when it says the payment lines enter any text to progress to the conclusion of the order.
 
 ## Todo
 
-The database will be created and maintained by the classes in the DB package, which will include a class to convert objects into database compatible objects, and a class to handle the database operations themselves.
-
 The parser needs some touch-ups, but those are low priority at the moment.
 
-The unit testing needs to be more comprehensive.
-
-The Pizza object and the Toppings need to have a payment system in place, where we can automatically calcluate the price of a pizza based on the size and the toppings.
